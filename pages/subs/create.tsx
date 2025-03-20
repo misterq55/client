@@ -3,6 +3,8 @@ import InputGroup from '@/components/InputGroup'
 import React from 'react'
 import { useRouter } from "next/router"
 import axios from 'axios';
+import { GetServerSideProps } from "next";
+import { headers } from "next/headers";
 
 const SubCreate = () => {
     const [name, setName] = useState("");
@@ -26,7 +28,7 @@ const SubCreate = () => {
 
     return (
         <div className="flex flex-col justify-center pt-16">
-            <div className="flex flex-col justify-center pt-16">
+            <div className="w-10/12 mx-auto md:w-96">
                 <h1 className="mb-2 text-lg font-medium">
                     커뮤니티 만들기
                 </h1>
@@ -80,3 +82,17 @@ const SubCreate = () => {
 }
 
 export default SubCreate
+
+export const getServerSideProps: GetServerSideProps = async ({req, res}) => {
+    try {
+        const cookie = req.headers.cookie;
+
+        if (!cookie) throw new Error("Missing auth token cookie");
+
+        await axios.get("/auth/me", {headers: {cookie}})
+        return { props: {} }
+    } catch (error) {
+        res.writeHead(307, {location: "/login"}).end()
+        return { props: {} }
+    }
+}

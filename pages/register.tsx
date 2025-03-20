@@ -1,16 +1,20 @@
 import InputGroup from '@/components/InputGroup';
+import { useAuthDispatch, useAuthState } from '@/context/auth';
 import axios from 'axios';
 import Link from 'next/link'
 import { useRouter } from 'next/router';
 import React, { FormEvent, useState } from "react";
 
- const Register = () => {
+const Register = () => {
+    let router = useRouter();
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState<any>({});
-    
-    let router = useRouter();
+
+    const { authenticated } = useAuthState();
+    const dispatch = useAuthDispatch();
+    if (authenticated) router.push("/");
 
     const handleSubmit = async (event: FormEvent) => {
         event.preventDefault();
@@ -35,19 +39,19 @@ import React, { FormEvent, useState } from "react";
                 <div className='w-10/12 mx-auto md:w-96'>
                     <h1 className='mb-2 text-lg font-medium'>회원가입</h1>
                     <form onSubmit={handleSubmit}>
-                        <InputGroup 
+                        <InputGroup
                             placeholder='Email'
                             value={email}
                             setValue={setEmail}
                             error={errors.email}
                         />
-                        <InputGroup 
+                        <InputGroup
                             placeholder='UserName'
                             value={username}
                             setValue={setUsername}
                             error={errors.username}
                         />
-                        <InputGroup 
+                        <InputGroup
                             placeholder='Password'
                             value={password}
                             setValue={setPassword}
@@ -67,6 +71,6 @@ import React, { FormEvent, useState } from "react";
             </div>
         </div>
     )
- }
+}
 
- export default Register
+export default Register
