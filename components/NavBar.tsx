@@ -8,9 +8,6 @@ const NavBar: React.FC = () => {
     const { loading, authenticated } = useAuthState();
     const dispatch = useAuthDispatch();
 
-    console.log(loading)
-    console.log(authenticated)
-
     const handleLogOut = () => {
         axios.post("/auth/logout")
             .then(() => {
