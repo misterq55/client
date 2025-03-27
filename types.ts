@@ -10,7 +10,7 @@ export interface Sub {
     updatedAt: string;
     name: string;
     title: string;
-    decription: string;
+    description: string;
     imageUrn: string;
     bannerUrn: string;
     username: string;
