@@ -6,6 +6,7 @@ import Axios from "axios";
 import type { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { SWRConfig } from "swr";
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   Axios.defaults.baseURL = process.env.NEXT_PUBLIC_SERVER_BASE_URL + "/api";
