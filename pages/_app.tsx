@@ -32,7 +32,7 @@ export default function App({ Component, pageProps }: AppProps) {
   >
     <AuthProvider>
       {!autoRoute && <NavBar />}
-      <div className={autoRoute ? "" : "pt-12"}>
+      <div className={autoRoute ? "" : "pt-12 bg-gray-200 min-h-screen"}>
         <Component {...pageProps} />;
       </div>
     </AuthProvider>

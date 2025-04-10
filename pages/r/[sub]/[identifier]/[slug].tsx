@@ -95,7 +95,7 @@ const PostPage = () => {
                                                 /u/{post.username}
                                             </Link>
                                             <Link href={post.url} className='mx-1 hover:underline'>
-                                                {dayjs(post.createAt).format("YYYY-MM-DD HH:mm")}
+                                                {dayjs(post.createdAt).format("YYYY-MM-DD HH:mm")}
                                             </Link>
                                         </p>
                                     </div>
@@ -113,7 +113,7 @@ const PostPage = () => {
                             </div>
                             <div>
                                 {/* 댓글 작성 구간 */}
-                                <div className='pr-6 mb-4'>
+                                <div className='pr-6 mb-4 pl-9'>
                                     {authenticated ?
                                         (<div>
                                             <p className='mb-1 text-xs'>
@@ -186,7 +186,7 @@ const PostPage = () => {
                                                     {`
                                                         ${comment.voteScore}
                                                         posts
-                                                        ${dayjs(comment.createAt).format("YYYY-MM-DD HH:mm")}
+                                                        ${dayjs(comment.createdAt).format("YYYY-MM-DD HH:mm")}
                                                     `}
                                                 </span>
                                             </p>

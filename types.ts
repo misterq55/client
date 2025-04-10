@@ -28,7 +28,7 @@ export interface Post {
     body: string;
     subName: string;
     username: string;
-    createAt: string;
+    createdAt: string;
     updatedAt: string;
     sub?: Sub;
 
@@ -42,7 +42,7 @@ export interface Comment {
     identifier: string;
     body: string;
     username: string;
-    createAt: string;
+    createdAt: string;
     updateAt: string;
     post?: Post;
 
